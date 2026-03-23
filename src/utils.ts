@@ -1,4 +1,4 @@
-import type { WeixinMessage, MessageItem, ItemType, TextItem } from './types.js'
+import { type WeixinMessage, type MessageItem, ItemType, type TextItem } from './types.js'
 
 export function extractText(msg: WeixinMessage): string {
   for (const item of msg.item_list || []) {

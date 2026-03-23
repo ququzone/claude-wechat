@@ -5,7 +5,7 @@ import { ListToolsRequestSchema, CallToolRequestSchema } from '@modelcontextprot
 import { ILinkClient } from './ilink.js'
 import { ensureCredentials } from './auth.js'
 import { extractText, truncate } from './utils.js'
-import type { WeixinMessage, MessageType, MessageState } from './types.js'
+import { MessageState, type WeixinMessage, MessageType } from './types.js'
 
 // Create MCP Server and declare as Channel
 const mcp = new Server(

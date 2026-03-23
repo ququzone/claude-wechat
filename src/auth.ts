@@ -5,11 +5,12 @@ import { sleep } from './utils.js'
 export async function login(): Promise<Credentials> {
   // 1. Fetch QR code
   console.log('Fetching QR code...')
-  const qrResp = await fetch('https://ilinkai.weixin.qq.com/ilink/bot/get_bot_qrcode')
+  const qrResp = await fetch('https://ilinkai.weixin.qq.com/ilink/bot/get_bot_qrcode?bot_type=3')
   if (!qrResp.ok) {
     throw new Error('Failed to fetch QR code')
   }
 
+  // @ts-ignore
   const qrData: QRCodeResponse = await qrResp.json()
 
   console.log('\nScan this QR code with WeChat:')
@@ -33,6 +34,7 @@ export async function login(): Promise<Credentials> {
       throw new Error('Failed to check QR status')
     }
 
+    // @ts-ignore
     const status: QRStatusResponse = await statusResp.json()
 
     if (status.status !== lastStatus) {
@@ -73,3 +75,5 @@ export async function ensureCredentials(): Promise<Credentials> {
   console.log('No credentials found. Starting login flow...')
   return login()
 }
+
+await ensureCredentials()

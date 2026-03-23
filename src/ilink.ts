@@ -35,10 +35,11 @@ export class ILinkClient {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`)
       }
 
+      // @ts-ignore
       const data: GetUpdatesResponse = await response.json()
 
-      if (data.ret !== 0) {
-        throw new Error(`iLink API error: ${data.errmsg || 'Unknown error'} (ret=${data.ret})`)
+      if (data.errcode) {
+        throw new Error(`iLink API error: ${data.errmsg || 'Unknown error'} (ret=${data.errcode})`)
       }
 
       return data
@@ -79,6 +80,7 @@ export class ILinkClient {
       throw new Error(`Failed to send message: HTTP ${response.status}`)
     }
 
+    // @ts-ignore
     const data: SendMessageResponse = await response.json()
     if (data.ret !== 0) {
       throw new Error(`Send failed: ${data.errmsg || 'Unknown error'}`)

@@ -42,7 +42,6 @@ export interface Credentials {
 }
 
 export interface GetUpdatesResponse {
-  ret: number
   errcode?: number
   errmsg?: string
   msgs?: WeixinMessage[]

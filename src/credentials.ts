@@ -1,9 +1,8 @@
 import type { Credentials } from './types.js'
 import { mkdir, writeFile, readFile, access } from 'fs/promises'
-import { dirname, homedir } from 'path'
-import { existsSync } from 'fs'
+import { dirname } from 'path'
 
-const CREDENTIALS_PATH = `${homedir()}/.wechat-channel/credentials.json`
+const CREDENTIALS_PATH = `${process.env.HOME}/.wechat-channel/credentials.json`
 
 export async function loadCredentials(): Promise<Credentials> {
   const data = await readFile(CREDENTIALS_PATH, 'utf-8')
