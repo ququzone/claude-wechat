@@ -15,8 +15,8 @@ const mcp = new Server(
       experimental: { 'claude/channel': {} },
       tools: {},
     },
-    instructions: `WeChat messages arrive as <channel source="wechat" chat_id="..." context_token="...">.
-Reply using the reply tool with chat_id and text parameters.
+    instructions: `WeChat messages arrive as <channel source="wechat" chat_id="...">.
+When you receive a message, you can reply using the reply tool with the chat_id from the tag attribute.
 Messages are from WeChat users - respond in a friendly, helpful tone.`,
   },
 )
@@ -127,7 +127,6 @@ async function processMessage(msg: WeixinMessage) {
         content: text,
         meta: {
           chat_id: msg.from_user_id,
-          context_token: msg.context_token,
         },
       },
     })

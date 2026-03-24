@@ -8,10 +8,7 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/ququzone/claude-wechat",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ququzone/claude-wechat.git"
-  },
+  "repository": "https://github.com/ququzone/claude-wechat",
   "keywords": [
     "wechat",
     "messaging",

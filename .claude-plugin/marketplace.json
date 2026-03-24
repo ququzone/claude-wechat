@@ -1,7 +1,8 @@
 {
   "name": "claude-wechat",
   "owner": {
-    "name": "ququzone"
+    "name": "ququzone",
+    "email": "xueping.yang@gmail.com"
   },
   "metadata": {
     "description": "WeChat integration plugins for Claude Code"
