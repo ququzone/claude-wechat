@@ -1,0 +1,44 @@
+{
+  "name": "claude-wechat-channel",
+  "displayName": "WeChat Channel",
+  "description": "A Claude Code Channel plugin that enables bidirectional chat between WeChat mobile and Claude Code desktop via iLink Bot API. Features include QR code login, automatic reconnection with exponential backoff, and real-time message polling.",
+  "version": "0.0.1",
+  "author": {
+    "name": "ququzone"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ququzone/claude-wechat-channel",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ququzone/claude-wechat-channel.git"
+  },
+  "category": "communication",
+  "tags": [
+    "wechat",
+    "messaging",
+    "chat",
+    "mobile",
+    "channel"
+  ],
+  "icon": "icon.png",
+  "mcpServers": {
+    "wechat": {
+      "command": "bun",
+      "args": [
+        "src/index.ts"
+      ],
+      "env": {}
+    }
+  },
+  "capabilities": {
+    "tools": true,
+    "channel": true
+  },
+  "installation": {
+    "type": "stdio",
+    "command": "bun",
+    "args": [
+      "src/index.ts"
+    ]
+  }
+}
