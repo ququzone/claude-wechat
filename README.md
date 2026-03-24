@@ -11,6 +11,15 @@ A Claude Code Channel plugin that connects WeChat to Claude Code via iLink Bot A
 
 ## Installation
 
+### Prerequisites
+
+⚠️ **Channels are currently in Research Preview**
+
+- Requires Claude Code v2.1.80 or later
+- Must be logged in with claude.ai account (not API key or console auth)
+- Team/Enterprise organizations must have Channels explicitly enabled
+- Custom channels require development mode flag
+
 ### Option 1: Install from Marketplace (Recommended)
 
 ```bash
@@ -37,10 +46,17 @@ Scan the QR code with WeChat to authenticate. Credentials are stored in `~/.wech
 
 ### Start Claude Code with WeChat Channel
 
+⚠️ **Important**: During the research preview, custom channels must use the development flag:
+
 ```bash
-# Start Claude Code with the WeChat channel enabled
-claude --channels plugin:wechat-channel:wechat@claude-wechat
+# Start Claude Code with the WeChat channel enabled (development mode)
+claude --dangerously-load-development-channels plugin:wechat-channel:wechat@claude-wechat
 ```
+
+**Note**: If you see "Channels are not currently available", ensure:
+- You're logged in with claude.ai (not API key)
+- Your organization has Channels enabled (for Team/Enterprise accounts)
+- You're using Claude Code v2.1.80 or later
 
 ### Send and Receive Messages
 
