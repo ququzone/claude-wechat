@@ -11,39 +11,74 @@ A Claude Code Channel plugin that connects WeChat to Claude Code via iLink Bot A
 
 ## Installation
 
+### Option 1: Install from Marketplace (Recommended)
+
 ```bash
-bun install
+# Add the marketplace
+/plugin marketplace add https://github.com/ququzone/claude-wechat
+
+# Install the plugin
+/plugin install wechat-channel@claude-wechat
 ```
 
-## First-Time Setup
-
-Login to WeChat:
+### Option 2: Development Mode
 
 ```bash
+# Install dependencies
+bun install
+
+# Login to WeChat (first time only)
 bun src/auth.ts
 ```
 
-Scan the QR code with WeChat to authenticate.
+Scan the QR code with WeChat to authenticate. Credentials are stored in `~/.wechat-channel/credentials.json`.
 
 ## Usage
 
-Start Claude Code with the WeChat channel:
+### Start Claude Code with WeChat Channel
 
 ```bash
-claude --dangerously-load-development-channels server:wechat
+# Start Claude Code with the WeChat channel enabled
+claude --channels plugin:wechat-channel:wechat@claude-wechat
 ```
 
-Send messages from WeChat, they will appear in Claude Code as:
+### Send and Receive Messages
+
+1. **Send messages from WeChat**: Open WeChat on your phone, find your bot, and send a message
+2. **Message appears in Claude Code**:
+   ```
+   <channel source="wechat" chat_id="...">your message</channel>
+   ```
+3. **Claude responds**: Claude will automatically reply using the WeChat bot
+
+### Example Conversation
 
 ```
-<channel source="wechat" chat_id="..." context_token="...">your message</channel>
-```
+You (in WeChat): What's the weather like today?
 
-Claude can reply using the `reply` tool.
+Claude (in Claude Code): I don't have access to real-time weather data, but I can help you check weather websites or services if you'd like.
+
+(Claude's response is automatically sent back to WeChat)
+```
 
 ## Configuration
 
-Credentials are stored in `~/.wechat-channel/credentials.json`.
+### Credentials File
+Credentials are stored in `~/.wechat-channel/credentials.json`:
+- Automatically created during first login
+- Contains authentication tokens for iLink Bot API
+- Do not share this file
+
+### Troubleshooting
+
+**Messages not appearing:**
+- Check that Claude Code is running with `--channels` flag
+- Verify you're logged in: run `bun src/auth.ts` again
+- Check Claude Code logs for errors
+
+**Cannot reply:**
+- Ensure the plugin is installed and enabled
+- Verify MCP server is running: check `/mcp` in Claude Code
 
 ## Architecture
 
